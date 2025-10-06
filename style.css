@@ -1,0 +1,186 @@
+/* ---------------- Body & Fonts ---------------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #e5ddd5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ---------------- Login Box ---------------- */
+#login {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+#login input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+#login input:focus {
+  border-color: #128C7E;
+  box-shadow: 0 0 5px rgba(18,140,126,0.5);
+}
+
+#login button {
+  width: 100%;
+  padding: 12px;
+  background: #128C7E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+#login button:hover {
+  background: #075E54;
+}
+
+/* ---------------- Chat Box ---------------- */
+#chat {
+  background: #f0f0f0;
+  width: 400px;
+  height: 600px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Room Title */
+#room-name {
+  background: #128C7E;
+  color: white;
+  padding: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Messages Area */
+#messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar Style */
+#messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+/* Message Bubbles */
+.msg {
+  max-width: 70%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  word-wrap: break-word;
+  animation: slideIn 0.3s ease-out;
+}
+
+.you {
+  align-self: flex-end;
+  background: #dcf8c6;
+  color: #000;
+  border-bottom-right-radius: 0;
+}
+
+.peer {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #000;
+  border-bottom-left-radius: 0;
+}
+
+/* Input Area */
+#msg {
+  width: calc(100% - 80px);
+  padding: 12px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-right: 5px;
+}
+
+#send {
+  padding: 12px 15px;
+  background: #128C7E;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+#send:hover {
+  background: #075E54;
+}
+
+/* Input Container */
+#chat input, #chat button {
+  margin: 10px;
+}
+
+#chat input {
+  flex: 1;
+}
+
+/* Flex container for input and button */
+#chat div:last-child {
+  display: flex;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+/* ---------------- Animations ---------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- Responsive ---------------- */
+@media(max-width: 450px) {
+  #login, #chat {
+    width: 90%;
+  }
+  #messages {
+    padding: 10px;
+  }
+}
