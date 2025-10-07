@@ -1,186 +1,253 @@
-/* ---------------- Body & Fonts ---------------- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
 }
 
 body {
-  background: #e5ddd5;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #87cefa, #98fb98);
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
+  animation: bgShift 10s infinite alternate ease-in-out;
 }
 
-/* ---------------- Login Box ---------------- */
+/* Animated gradient background */
+@keyframes bgShift {
+  0% { background: linear-gradient(135deg, #ffb6c1, #87cefa, #98fb98); }
+  50% { background: linear-gradient(135deg, #ffa07a, #f0e68c, #afeeee); }
+  100% { background: linear-gradient(135deg, #dda0dd, #ffdab9, #87cefa); }
+}
+
+.container {
+  width: 400px;
+  height: 600px;
+  background: #ffffffcc;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+/* LOGIN SCREEN */
 #login {
-  background: #ffffff;
-  padding: 30px 25px;
-  border-radius: 15px;
-  width: 350px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
   text-align: center;
-  animation: fadeIn 0.5s ease-out;
+  padding: 20px;
+}
+
+#login h2 {
+  color: #333;
+  text-shadow: 1px 1px 2px #fff;
 }
 
 #login input {
-  width: 100%;
-  padding: 12px 15px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
+  width: 90%;
+  padding: 10px;
   border-radius: 8px;
+  border: 2px solid #ff69b4;
+  font-size: 14px;
   outline: none;
-  transition: all 0.3s;
+  transition: 0.3s;
 }
 
 #login input:focus {
-  border-color: #128C7E;
-  box-shadow: 0 0 5px rgba(18,140,126,0.5);
+  border-color: #00bfff;
+  box-shadow: 0 0 8px #00bfff;
 }
 
 #login button {
-  width: 100%;
-  padding: 12px;
-  background: #128C7E;
+  width: 94%;
+  background: linear-gradient(45deg, #ff69b4, #ffa500);
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 12px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
 #login button:hover {
-  background: #075E54;
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #ffa500, #ff69b4);
 }
 
-/* ---------------- Chat Box ---------------- */
+/* CHAT SCREEN */
 #chat {
-  background: #f0f0f0;
-  width: 400px;
-  height: 600px;
-  border-radius: 15px;
-  display: flex;
+  display: none;
   flex-direction: column;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  overflow: hidden;
-  animation: fadeIn 0.5s ease-out;
+  height: 100%;
+  position: relative;
 }
 
-/* Room Title */
-#room-name {
-  background: #128C7E;
+/* Header */
+#header {
+  background: linear-gradient(90deg, #ff69b4, #ffa500);
   color: white;
-  padding: 15px;
-  font-weight: 500;
+  padding: 14px;
   text-align: center;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #fff;
 }
 
-/* Messages Area */
+/* Messages area */
 #messages {
   flex: 1;
-  padding: 15px;
+  padding: 10px;
   overflow-y: auto;
+  background: #fff5ee;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
 
-/* Scrollbar Style */
+/* Scrollbar */
 #messages::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
 #messages::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
-  border-radius: 4px;
+  background: #ffb6c1;
+  border-radius: 10px;
 }
 
-/* Message Bubbles */
+/* Messages */
 .msg {
-  max-width: 70%;
+  margin: 6px 0;
   padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 20px;
+  border-radius: 15px;
+  max-width: 80%;
+  font-size: 14px;
   word-wrap: break-word;
-  animation: slideIn 0.3s ease-out;
+  position: relative;
+  animation: fadeIn 0.3s ease;
 }
 
-.you {
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg.you {
+  background: linear-gradient(135deg, #98fb98, #00fa9a);
   align-self: flex-end;
-  background: #dcf8c6;
-  color: #000;
   border-bottom-right-radius: 0;
 }
 
-.peer {
+.msg.peer {
+  background: linear-gradient(135deg, #add8e6, #87ceeb);
   align-self: flex-start;
-  background: #ffffff;
-  color: #000;
   border-bottom-left-radius: 0;
 }
 
-/* Input Area */
-#msg {
-  width: calc(100% - 80px);
-  padding: 12px 15px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-  margin-right: 5px;
+.msg.info {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  background: none;
 }
 
-#send {
-  padding: 12px 15px;
-  background: #128C7E;
+/* Input area fixed bottom */
+#input-area {
+  display: flex;
+  padding: 8px;
+  background: #f8f8ff;
+  border-top: 2px solid #ff69b4;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  gap: 8px;
+}
+
+#input-area input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid #ffa500;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+#input-area input:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 6px #ff69b4;
+}
+
+#input-area button {
+  background: linear-gradient(45deg, #ff69b4, #ffa500);
   color: white;
   border: none;
-  border-radius: 20px;
+  padding: 10px 16px;
+  border-radius: 50%;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
-#send:hover {
-  background: #075E54;
+#input-area button:hover {
+  transform: rotate(15deg) scale(1.1);
 }
 
-/* Input Container */
-#chat input, #chat button {
-  margin: 10px;
-}
-
-#chat input {
-  flex: 1;
-}
-
-/* Flex container for input and button */
-#chat div:last-child {
-  display: flex;
-  padding: 10px;
-  background: #f0f0f0;
-}
-
-/* ---------------- Animations ---------------- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------------- Responsive ---------------- */
-@media(max-width: 450px) {
-  #login, #chat {
-    width: 90%;
+/* ✅ Mobile responsiveness */
+@media screen and (max-width: 480px) {
+  body {
+    height: 100dvh;
+    background-size: cover;
   }
+
+  .container {
+    width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #header {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #login input,
+  #login button {
+    width: 100%;
+  }
+
   #messages {
+    padding: 8px;
+  }
+
+  #input-area {
     padding: 10px;
+    gap: 6px;
+  }
+
+  #input-area input {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  #input-area button {
+    padding: 10px 12px;
+  }
+
+  .msg {
+    font-size: 13px;
+    max-width: 85%;
   }
 }
